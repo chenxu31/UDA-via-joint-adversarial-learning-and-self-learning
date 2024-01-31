@@ -71,8 +71,8 @@ def diceCoeffv2(pred, gt, eps=1e-5, activation='sigmoid'):
     pred = activation_fn(pred)
 
     N = gt.size(0)
-    pred_flat = pred.view(N, -1)
-    gt_flat = gt.view(N, -1)
+    pred_flat = pred.reshape((N, -1))
+    gt_flat = gt.reshape((N, -1))
 
     tp = torch.sum(gt_flat * pred_flat, dim=1)
     fp = torch.sum(pred_flat, dim=1) - tp

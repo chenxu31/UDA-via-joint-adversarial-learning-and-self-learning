@@ -48,8 +48,8 @@ def diceCoeff(pred, gt, eps=1e-5, activation='sigmoid'):
     pred = activation_fn(pred)
 
     N = gt.size(0)
-    pred_flat = pred.view(N, -1)
-    gt_flat = gt.view(N, -1)
+    pred_flat = pred.reshape((N, -1))
+    gt_flat = gt.reshape((N, -1))
 
     intersection = (pred_flat * gt_flat).sum(1)
     unionset = pred_flat.sum(1) + gt_flat.sum(1)
