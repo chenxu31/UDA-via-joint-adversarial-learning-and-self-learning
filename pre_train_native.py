@@ -22,7 +22,7 @@ from utils.metrics import diceCoeffv2
 import utils.joint_transforms as joint_transforms
 import utils.transforms as extended_transforms
 from networks.att_u_net import AttU_Net
-from datasets import liver
+#from datasets import liver
 import torch.nn.functional as F
 import torch
 import platform
@@ -127,6 +127,7 @@ def main(device, args):
             torch.save(net.state_dict(), os.path.join(args.checkpoint_dir, 'best.pth'))
 
         msg += "  val_dsc:%f/%f  best_dsc:%f" % (dsc_list.mean(), dsc_list.std(), best_dsc)
+        print(msg)
         torch.save(net.state_dict(), os.path.join(args.checkpoint_dir, 'last.pth'))
 
 
